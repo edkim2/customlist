@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class customList
+    public class customList<T>
     {
 
         public customList()
         {
 
         }
+        
+        public void Add(T itemToAdd)
+        {
+
+        }
+
 
     }
 }
