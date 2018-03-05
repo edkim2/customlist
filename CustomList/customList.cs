@@ -22,11 +22,35 @@ namespace CustomList
             temporaryArray = new T[0];
             finalArray = new T[capacity];
         }
-        
+
         // member methods
+        public int MaximumIndexCapacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                capacity = value;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
         public void Add(T itemToAdd)
         {
-
+            if(count == MaximumIndexCapacity)
+            {
+                CreateBiggerArray();
+            }
+            finalArray[count] = itemToAdd;
+            count++;
         }
 
         public void CreateBiggerArray()
