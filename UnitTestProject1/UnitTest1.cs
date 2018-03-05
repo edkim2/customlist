@@ -9,7 +9,7 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestingCountInAddMethod()
         {
 
             customList<int> list = new customList<int>();
@@ -31,7 +31,8 @@ namespace UnitTestProject1
 
         }
 
-        public void TestMethod2()
+        [TestMethod]
+        public void AddTest()
         {
             customList<int> list = new customList<int>();
 
@@ -52,5 +53,70 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void RemoveTest()
+        {
+            customList<int> list = new customList<int>();
+
+            // arrange
+            list.Add(10);
+            list.Add(20);
+            list.Add(30);
+            list.Add(40);
+            list.Add(50);
+            int expected = 40;
+
+            //int[] testArray = new int[5] {10, 20, 30, 40, 50 };
+
+            // act
+            list.Remove(30);
+            int actual = list[2];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void RemoveException()
+        {
+            customList<int> list = new customList<int>();
+
+            // arrange
+            list.Add(10);
+            list.Add(20);
+            list.Add(30);
+            list.Add(40);
+            list.Add(50);
+
+
+            // act
+            list.Remove(30);
+            int actual = list[4];
+
+            // assert
+        }
+
+        [TestMethod]
+        public void RemoveCountTest()
+        {
+            customList<int> list = new customList<int>();
+
+            // arrange
+            // int[] testArray = new int[5] { 10, 20, 30, 40, 50 };
+            int expected = 4;
+            int actual;
+            list.Add(10);
+            list.Add(20);
+            list.Add(30);
+            list.Add(40);
+            list.Add(50);
+            // act
+            list.Remove(30);
+            actual = list.Count;
+            // assert
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }
