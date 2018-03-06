@@ -11,7 +11,7 @@ namespace CustomList
     {
         // member variables
         int count;
-        int capacity = 5;
+        int capacity;
         T[] temporaryArray; // maybe move this to a method called CreatingNewArray
         T[] finalArray;
 
@@ -19,9 +19,9 @@ namespace CustomList
         // constructor
         public customList()
         {
-            capacity = 5;
-            temporaryArray = new T[0];
+            capacity = 10;
             finalArray = new T[capacity];
+            temporaryArray = new T[0];
         }
 
         // member methods
@@ -56,6 +56,7 @@ namespace CustomList
 
         public void CreateBiggerArray()
         {
+            
             T[] temproraryArray = new T[capacity * 2];
             for (int i = 0; i < count; i++)
             {
@@ -101,5 +102,22 @@ namespace CustomList
             }
             return toString;
         }
+
+        public static customList<T> operator + (customList<T> listOne, customList<T> listTwo)
+        {
+            customList<T> sumOfLists = new customList<T>();
+            foreach (T itemToAdd in listOne)
+            {
+                sumOfLists.Add(itemToAdd);
+            }
+            foreach (T itemToAdd in listTwo)
+            {
+                sumOfLists.Add(itemToAdd);
+            }
+            return sumOfLists;
+            //sumOfLists = listOne + listTwo;
+            //return sumOfLists;
+        }
+
     }
 }
