@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class customList<T>
+    public class customList<T> : IEnumerable<T>
     {
         // member variables
         int count;
@@ -79,5 +79,17 @@ namespace CustomList
             return false;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return finalArray[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
