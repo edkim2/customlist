@@ -118,5 +118,20 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            // arrange
+            customList<string> list = new customList<string>() { "10", "20", "30", "40", "50" };
+            string expected = "10 20 30 40 50";
+            string actual;
+
+            // act
+            actual = list.ToString();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
