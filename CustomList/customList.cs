@@ -91,5 +91,15 @@ namespace CustomList
         {
             return GetEnumerator();
         }
+
+        public override string ToString()
+        {
+            string toString = "";
+            for (int i = 0; i < count; i++)
+            {
+                toString = toString + finalArray[i] + " ";
+            }
+            return toString;
+        }
     }
 }
