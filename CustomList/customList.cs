@@ -69,6 +69,7 @@ namespace CustomList
         public void Remove(T itemToRemove)
         {
             bool noItem = true;
+            bool removedItem = false;
             T[] temporaryArrayList = new T[capacity];
             for (int i = 0; i < count; i++)
             {
@@ -77,6 +78,7 @@ namespace CustomList
                     if (finalArray[i].Equals(itemToRemove))
                     {
                         noItem = false;
+                        removedItem = true;
                     }
                     else
                     {
@@ -87,6 +89,10 @@ namespace CustomList
                 {
                     temporaryArrayList[i - 1] = finalArray[i];
                 }
+            }
+            if (removedItem)
+            {
+                count--;
             }
             finalArray = temporaryArrayList;
             //for (int i = 0; i < count; i++)
@@ -154,5 +160,7 @@ namespace CustomList
             }
             return listOne;
         }
+
+        //public void Zipper()
     }
 }
