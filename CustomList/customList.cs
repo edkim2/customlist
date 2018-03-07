@@ -161,6 +161,21 @@ namespace CustomList
             return listOne;
         }
 
-        //public void Zipper()
-    }
+        public customList<T> ZipperList (customList<T> listOne, customList<T> listTwo)
+        {
+            customList<T> zipperList = new customList<T>();
+            for (int i = 0; i < listOne.count && i <listTwo.count; i++)
+            {
+                zipperList.Add(listOne.finalArray[i]);
+                zipperList.Add(listTwo.finalArray[i]);
+            }
+            return zipperList;
+            //if (listOne.Count > listTwo.Count || listOne.Count < listTwo.Count || listOne.Count == listTwo.Count)
+            //{
+            //    for (int i = 0; i < listOne.Count; i++)
+            //    {
+            //        Console.WriteLine(
+            //    }
+            }
+        }
 }
