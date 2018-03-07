@@ -66,18 +66,39 @@ namespace CustomList
             finalArray = temporaryArray;
         }
 
-        public bool Remove(T itemToRemove)
+        public void Remove(T itemToRemove)
         {
+            bool noItem = true;
+            T[] temporaryArrayList = new T[capacity];
             for (int i = 0; i < count; i++)
             {
-                if (finalArray[i].Equals(itemToRemove))
+                if (noItem)
                 {
-                    finalArray[i] = finalArray[i + 1];
-                    count++;
-                    return true;
+                    if (finalArray[i].Equals(itemToRemove))
+                    {
+                        noItem = false;
+                    }
+                    else
+                    {
+                        temporaryArrayList[i] = finalArray[i];
+                    }
+                }
+                else
+                {
+                    temporaryArrayList[i - 1] = finalArray[i];
                 }
             }
-            return false;
+            finalArray = temporaryArrayList;
+            //for (int i = 0; i < count; i++)
+            //{
+            //    if (finalArray[i].Equals(itemToRemove))
+            //    {
+            //        finalArray[i] = finalArray[i + 1];
+            //        count--;
+            //        return true;
+            //    }
+            //}
+            //return false;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -119,5 +140,19 @@ namespace CustomList
             //return sumOfLists;
         }
 
+        public static customList<T> operator - (customList<T> listOne, customList<T> listTwo)
+        {
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                for (int j = 0; j < listTwo.Count; j++)
+                {
+                    if (listOne.finalArray[i].Equals(listTwo.finalArray[j]))
+                    {
+                        listOne.Remove(listTwo.finalArray[j]);
+                    }
+                }
+            }
+            return listOne;
+        }
     }
 }
